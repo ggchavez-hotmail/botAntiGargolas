@@ -17,6 +17,7 @@ _Opciones:_
 
 ```
 - npm/node v16.13.2
+- https://discord.com/developers/applications (tener creado APP/BOT)
 ```
 
 ### Comenzando
