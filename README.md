@@ -1,4 +1,4 @@
-# Bot Anti Gargolas
+# Bot Anti Gargolas - Discord v13 js
 
 _Bot para eliminar link malicioso y otras funcionalidades basicas._
 
