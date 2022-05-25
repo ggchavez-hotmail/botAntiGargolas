@@ -1,3 +1,5 @@
+const animals = require('random-animals-api'); 
+
 /***
  * - Para ejecutar de forma local el programa:
  *    Se debe crear archivo de configuracion ".env" con las variables de entorno
@@ -60,7 +62,14 @@ const token = process.env["TOKEN"];
 
 //Verificacion de que el bot esta en linea
 client.on("ready", () => {
-    console.log(`Logged in as ${client.user.tag}! Versión: 1.0.1`);
+    console.log(`Logged in as ${client.user.tag}! Versión: 1.0.5`);
+    client.user.setPresence({ 
+      status:"online",
+      activity:{
+        name:"Youtube: GG",
+        type: "WATCHING"
+      }
+    });
 });
 
 //Verificar los mensajes que se envian en los canales
@@ -99,7 +108,16 @@ client.on("messageCreate", async (message) => {
                     { name: "`.ping`", value: "Response pong" },
 
                     { name: "`.random`", value: "Returns a random number" },
+                  
                     { name: "`.cat`", value: "Returns a random cat image" },
+                    { name: "`.dog`", value: "Returns a random dog image" },
+                    { name: "`.bunny`", value: "Returns a random bunny image" },
+                    { name: "`.duck`", value: "Returns a random duck image" },
+                    { name: "`.fox`", value: "Returns a random fox image" },
+                    { name: "`.lizard`", value: "Returns a random lizard image" },
+                    { name: "`.shiba`", value: "Returns a random shiba image" },
+                    { name: "`.koala`", value: "Returns a random koala image" },
+                    { name: "`.panda`", value: "Returns a random panda image" },
                     {
                         name: "`.joke.ym`",
                         value: 'Returns a random joke "your mamma...  "',
@@ -133,15 +151,109 @@ client.on("messageCreate", async (message) => {
             message.reply(`Your random number is ${randomNumber}.`);
             return;
         }
-
+/*
         if (mensaje == ".cat") {
             const { file } = await fetch("https://aws.random.cat/meow").then(
                 (response) => response.json()
             );
-
+          
+            console.log([file]);
+          
             message.channel.send({ content: "...otro gato", files: [file] });
             return;
         }
+     */
+        if(mensaje == ".cat"){
+          animals.cat()
+          .then(url => 
+            message.channel.send({ content: "...otro gato", files: [url] }))
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
+        if(mensaje == ".dog"){
+          animals.dog()
+          .then(url => 
+            message.channel.send({ content: "...otro perro", files: [url] }))
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
+        if(mensaje == ".bunny"){
+          animals.bunny()
+          .then(url => 
+            message.channel.send({ content: "...otro buonejo", files: [url] }))
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
+        if(mensaje == ".duck"){
+          animals.duck()
+          .then(url => 
+            message.channel.send({ content: "...otro pato", files: [url] }))
+          
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
+        if(mensaje == ".fox"){
+          animals.fox()
+          .then(url => 
+            message.channel.send({ content: "...otro zorro", files: [url] }))
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
+        if(mensaje == ".lizard"){
+          animals.lizard()
+          .then(url => 
+            message.channel.send({ content: "...otro largato", files: [url] }))
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
+        if(mensaje == ".shiba"){
+          animals.shiba()
+          .then(url => 
+            message.channel.send({ content: "...otro shiba", files: [url] }))
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
+        if(mensaje == ".koala"){
+          animals.koala()
+          .then(url => 
+            message.channel.send({ content: "...otro koala", files: [url] }))
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
+        if(mensaje == ".panda"){
+          animals.panda()
+          .then(url => 
+            message.channel.send({ content: "...otro panda", files: [url] }))
+            .catch((error) => message.channel.send("Ya lo rompiste, mi ciela."));
+          
+          return;
+        
+        }
+      
         if (mensaje == ".joke.ym") {
             const joke = await fetch("https://api.yomomma.info/").then((response) =>
                 response.json()
